@@ -1,2 +1,3 @@
-# gmai
-GMAI: GPU Memory Allocation Inspector
+# GMAI: GPU Memory Allocator Inspector
+
+GMAI is a tool that can be executed in a Linux system to extract the properties of the GPU memory allocator. It can be used in two ways: In the first one it uses reverse engineering techniques to extract the memory allocator properties of a target GPU. With this information it generates a configuration file which can be used to visualize the extracted properties of the memory allocator. The second way of using this tool consists on a preload library which can be used to automatically compute the real GPU memory consumption of a target application based on the memory allocator properties stored in the configuration file. We provide two versions of the tool: The first one is based on CUDA and works with NVIDIA GPUs, while the second one is based on OpenCL and has been tested with Mali GPUs. 
