@@ -12,7 +12,7 @@ printf "CAP %d.%d\n", main::properties.major, main::properties.minor
 printf "RTV %d.%d\n", main::runtime_version/1000, (main::runtime_version%1000)/10
 printf "DRV %d.%d\n", main::driver_version/1000, (main::driver_version%1000)/10
 printf "PSZ %d\n", len
-set logging off
+set logging enabled off
 set logging overwrite off
 set variable main::pool_size = len
 delete
@@ -25,7 +25,7 @@ continue
 set logging on
 set variable main::granularity = main::pool_size/main::iteration
 printf "GRN %d\n", main::granularity
-set logging off
+set logging enabled off
 set variable main::flag = 1
 delete
 
@@ -50,7 +50,7 @@ while main::finished == 0
 		set variable $max_bytes =  $max_blocks * main::granularity
 		set logging on
 		printf "SCL %d %d %d %d %d\n", $class, $min_blocks, $max_blocks, $min_bytes, $max_bytes
-		set logging off
+		set logging enabled off
 	end
 	continue
 	continue
@@ -64,7 +64,7 @@ break mmap
 continue
 set logging on
 printf "LGM %d\n", len - main::pool_size
-set logging off
+set logging enabled off
 delete
 
 # Allocator policy detection
@@ -90,7 +90,7 @@ else
 		end
 	end
 end
-set logging off
+set logging enabled off
 delete
 
 # Coalescing support
@@ -102,7 +102,7 @@ if main::chunk_4 == main::chunk_1
 else 
 	printf "CLS %d\n", 0
 end
-set logging off
+set logging enabled off
 delete
 
 # Splitting support
@@ -114,7 +114,7 @@ if main::chunk_3 == main::chunk_1
 else 
 	printf "SPL %d\n", 0
 end
-set logging off
+set logging enabled off
 delete
 
 # Expansion policy
@@ -128,7 +128,7 @@ if main::index == main::max_allocations - 1
 else
 	printf "EXP Treshold %d\n", main::index * main::granularity
 end
-set logging off
+set logging enabled off
 delete
 
 # Pool usage
@@ -148,7 +148,7 @@ else
 		end
 	end
 end
-set logging off
+set logging enabled off
 delete
 
 # Shrinking support
@@ -166,7 +166,7 @@ else
 		printf "SHR No. Pools deleted at the end\n"
 	end
 end
-set logging off
+set logging enabled off
 delete
 
 # Finalization
